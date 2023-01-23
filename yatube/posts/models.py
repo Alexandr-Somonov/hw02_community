@@ -16,6 +16,10 @@ class Group(models.Model):
 class Post(models.Model):
     text = models.TextField()
     pub_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.text
+
     group = models.ForeignKey(
         Group,
         on_delete=models.SET_NULL,
