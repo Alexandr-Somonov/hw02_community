@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'core.apps.CoreConfig',
     'users.apps.UsersConfig',
     'posts.apps.PostsConfig',
     'django.contrib.admin',
@@ -50,6 +51,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+LOGIN_URL = 'users:login'
+LOGIN_REDIRECTED_URL = 'posts:index'
 
 ROOT_URLCONF = 'yatube.urls'
 
@@ -136,3 +140,6 @@ STATICFILES_DIRS = [
     '/static/img/fav/mstile-150x150.png',
     '/static/img/fav/safari-pinned-tab.svg',
 ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'sent_emails')
